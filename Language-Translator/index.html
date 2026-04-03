@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Language Translator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Add signup form modal -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal-content">
+            <form class="signup-form">
+                <h2>Create Account</h2>
+                <span class="close-btn">&times;</span>
+                <div class="form-group">
+                    <input type="text" id="fullname" required>
+                    <label for="fullname">Full Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" required>
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+    <div class="auth-buttons">
+        <button class="auth-btn signin-btn">Sign In</button>
+        <button class="auth-btn signup-btn">Sign Up</button>
+    </div>
+    <div class="container">
+        <h1>Multilingual Language Translator</h1>
+        <div class="translator">
+            <div class="text-input">
+                <div class="input-controls">
+                    <span class="direction-indicator"></span>
+                    <textarea id="inputText" placeholder="Enter text to translate..."></textarea>
+                    <button id="startSpeech" class="speech-btn" title="Start Speech Recognition">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+                <select id="sourceLanguage">
+                    <option value="en">1. English</option>
+                    <!-- Indian Languages -->
+                    <optgroup label="Indian Languages">
+                        <option value="hi">2. Hindi</option>
+                        <option value="bn">3. Bengali</option>
+                        <option value="te">4. Telugu</option>
+                        <option value="mr">5. Marathi</option>
+                        <option value="ta">6. Tamil</option>
+                        <option value="gu">7. Gujarati</option>
+                        <option value="kn">8. Kannada</option>
+                        <option value="ml">9. Malayalam</option>
+                        <option value="pa">10. Punjabi</option>
+                        <option value="or">11. Odia</option>
+                        <option value="as">12. Assamese</option>
+                        <option value="sd">13. Sindhi</option>
+                        <option value="ur">14. Urdu</option>
+                        <option value="sa">15. Sanskrit</option>
+                        <option value="ks">16. Kashmiri</option>
+                        <option value="ne">17. Nepali</option>
+                        <option value="doi">18. Dogri</option>
+                        <option value="kok">19. Konkani</option>
+                        <option value="mai">20. Maithili</option>
+                        <option value="mni">21. Manipuri</option>
+                        <option value="brx">22. Bodo</option>
+                        <option value="sat">23. Santali</option>
+                    </optgroup>
+                    <!-- International Languages -->
+                    <optgroup label="European Languages">
+                        <option value="es">24. Spanish</option>
+                        <option value="fr">25. French</option>
+                        <option value="de">26. German</option>
+                        <option value="it">27. Italian</option>
+                        <option value="pt">28. Portuguese</option>
+                        <option value="ru">29. Russian</option>
+                        <option value="nl">30. Dutch</option>
+                        <option value="el">31. Greek</option>
+                        <option value="pl">32. Polish</option>
+                    </optgroup>
+                    <optgroup label="Asian Languages">
+                        <option value="zh">33. Chinese (Simplified)</option>
+                        <option value="zh-TW">34. Chinese (Traditional)</option>
+                        <option value="ja">35. Japanese</option>
+                        <option value="ko">36. Korean</option>
+                        <option value="th">37. Thai</option>
+                        <option value="vi">38. Vietnamese</option>
+                        <option value="id">39. Indonesian</option>
+                    </optgroup>
+                    <optgroup label="Middle Eastern">
+                        <option value="ar">40. Arabic</option>
+                        <option value="fa">41. Persian</option>
+                        <option value="he">42. Hebrew</option>
+                        <option value="tr">43. Turkish</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="translate-controls">
+                <button id="translateBtn">Translate</button>
+                <button id="swapLanguages" title="Swap Languages">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+            </div>
+            <div class="text-output">
+                <div class="output-controls">
+                    <span class="direction-indicator"></span>
+                    <textarea id="outputText" readonly></textarea>
+                    <button id="speakOutput" class="speech-btn" title="Listen">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <select id="targetLanguage">
+                    <!-- Indian Languages -->
+                    <optgroup label="Indian Languages">
+                        <option value="hi">1. Hindi</option>
+                        <option value="bn">2. Bengali</option>
+                        <option value="te">3. Telugu</option>
+                        <option value="mr">4. Marathi</option>
+                        <option value="ta">5. Tamil</option>
+                        <option value="gu">6. Gujarati</option>
+                        <option value="kn">7. Kannada</option>
+                        <option value="ml">8. Malayalam</option>
+                        <option value="pa">9. Punjabi</option>
+                        <option value="or">10. Odia</option>
+                        <option value="as">11. Assamese</option>
+                        <option value="sd">12. Sindhi</option>
+                        <option value="ur">13. Urdu</option>
+                        <option value="sa">14. Sanskrit</option>
+                        <option value="ks">15. Kashmiri</option>
+                        <option value="ne">16. Nepali</option>
+                        <option value="doi">17. Dogri</option>
+                        <option value="kok">18. Konkani</option>
+                        <option value="mai">19. Maithili</option>
+                        <option value="mni">20. Manipuri</option>
+                        <option value="brx">21. Bodo</option>
+                        <option value="sat">22. Santali</option>
+                    </optgroup>
+                    <!-- European Languages -->
+                    <optgroup label="European Languages">
+                        <option value="es">23. Spanish</option>
+                        <option value="fr">24. French</option>
+                        <option value="de">25. German</option>
+                        <option value="it">26. Italian</option>
+                        <option value="pt">27. Portuguese</option>
+                        <option value="ru">28. Russian</option>
+                        <option value="nl">29. Dutch</option>
+                        <option value="el">30. Greek</option>
+                        <option value="pl">31. Polish</option>
+                    </optgroup>
+                    <!-- Asian Languages -->
+                    <optgroup label="Asian Languages">
+                        <option value="zh">32. Chinese (Simplified)</option>
+                        <option value="zh-TW">33. Chinese (Traditional)</option>
+                        <option value="ja">34. Japanese</option>
+                        <option value="ko">35. Korean</option>
+                        <option value="th">36. Thai</option>
+                        <option value="vi">37. Vietnamese</option>
+                        <option value="id">38. Indonesian</option>
+                    </optgroup>
+                    <!-- Middle Eastern -->
+                    <optgroup label="Middle Eastern">
+                        <option value="ar">39. Arabic</option>
+                        <option value="fa">40. Persian</option>
+                        <option value="he">41. Hebrew</option>
+                        <option value="tr">42. Turkish</option>
+                    </optgroup>
+                    <option value="en">43. English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
